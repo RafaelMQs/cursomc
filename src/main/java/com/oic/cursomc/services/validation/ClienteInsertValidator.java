@@ -1,0 +1,38 @@
+package com.oic.cursomc.services.validation;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+import com.oic.cursomc.domain.enums.TipoCliente;
+import com.oic.cursomc.dto.ClienteNewDTO;
+import com.oic.cursomc.resources.exeptions.FieldMessage;
+import com.oic.cursomc.services.validation.utils.BR;
+
+public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
+	
+	@Override
+	public void initialize(ClienteInsert ann) {
+	}
+
+	@Override
+	public boolean isValid(ClienteNewDTO objDto, ConstraintValidatorContext context) {
+		List<FieldMessage> list = new ArrayList<>();
+
+		if(objDto.getTipo().equals(TipoCliente.PESSOAFISICA.getCod()) && !BR.isValidCPF(objDto.getCpfOCnpj())){
+			list.add(new FieldMessage("cpfOCnpj", "CPF Inválido"));
+		}
+		if(objDto.getTipo().equals(TipoCliente.PESSOAJURIDICA.getCod()) && !BR.isValidCNPJ(objDto.getCpfOCnpj())){
+			list.add(new FieldMessage("cpfOCnpj", "CNPJ Inválido"));
+		}
+
+		for (FieldMessage e : list) {
+			context.disableDefaultConstraintViolation();
+			context.buildConstraintViolationWithTemplate(e.getMessage()).addPropertyNode(e.getFieldName())
+					.addConstraintViolation();
+		}
+		return list.isEmpty();
+	}
+}
