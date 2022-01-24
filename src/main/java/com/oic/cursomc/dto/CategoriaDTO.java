@@ -2,10 +2,11 @@ package com.oic.cursomc.dto;
 
 import java.io.Serializable;
 
-import com.oic.cursomc.domain.Categoria;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
+
+import com.oic.cursomc.domain.Categoria;
 
 public class CategoriaDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
