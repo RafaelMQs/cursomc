@@ -77,7 +77,7 @@ public class Produto implements Serializable{
 		this.nome = nome;
 	}
 
-	public double getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
