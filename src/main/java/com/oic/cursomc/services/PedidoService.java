@@ -15,7 +15,6 @@ import com.oic.cursomc.domain.ItemPedido;
 import com.oic.cursomc.domain.PagamentoComBoleto;
 import com.oic.cursomc.domain.Pedido;
 import com.oic.cursomc.domain.enums.EstadoPagamento;
-import com.oic.cursomc.repositories.ClienteRepository;
 import com.oic.cursomc.repositories.ItemPedidoRepository;
 import com.oic.cursomc.repositories.PagamentoRepository;
 import com.oic.cursomc.repositories.PedidoRepository;

@@ -7,7 +7,6 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.oic.cursomc.services.validation.ClienteInsert;
 
 @ClienteInsert
